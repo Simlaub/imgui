@@ -20,6 +20,17 @@ project "ImGui"
 		"imstb_truetype.h",
 		"imgui_demo.cpp",
 		"imgui_tables.cpp",
+
+		"implot/implot.h",
+		"implot/implot.cpp",
+		"implot/implot_demo.cpp",
+		"implot/implot_internal.h",
+		"implot/implot_items.cpp"
+	}
+
+	includedirs
+	{
+		"%{prj.name}"
 	}
 
 	filter "system:windows"
