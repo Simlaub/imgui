@@ -28,6 +28,11 @@ project "ImGui"
 		"implot/implot_items.cpp"
 	}
 
+	includedirs
+	{
+		"%{prj.name}"
+	}
+
 	filter "system:windows"
 	    systemversion "latest"
 
