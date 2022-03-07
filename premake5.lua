@@ -28,10 +28,10 @@ project "ImGui"
 		"implot/implot_items.cpp"
 	}
 
-	includedirs
-	{
-		"%{prj.name}"
-	}
+    includedirs
+    {
+        ""
+    }
 
 	filter "system:windows"
 	    systemversion "latest"
