@@ -25,6 +25,7 @@
 
 // CHANGELOG
 // (minor and older changes stripped away, please see git history for details)
+//  2022-02-07: Inputs: Forward keyDown/keyUp events to OS when unused by dear imgui.
 //  2022-01-31: Fix building with old Xcode versions that are missing gamepad features.
 //  2022-01-26: Inputs: replaced short-lived io.AddKeyModsEvent() (added two weeks ago)with io.AddKeyEvent() using ImGuiKey_ModXXX flags. Sorry for the confusion.
 //  2021-01-20: Inputs: calling new io.AddKeyAnalogEvent() for gamepad support, instead of writing directly to io.NavInputs[].
@@ -133,7 +134,8 @@ static double GetMachAbsoluteTimeInSeconds()
 
 - (void)keyDown:(NSEvent*)event
 {
-    ImGui_ImplOSX_HandleEvent(event, self);
+    if (!ImGui_ImplOSX_HandleEvent(event, self))
+        [super keyDown:event];
 
     // Call to the macOS input manager system.
     [self interpretKeyEvents:@[event]];
@@ -141,7 +143,8 @@ static double GetMachAbsoluteTimeInSeconds()
 
 - (void)keyUp:(NSEvent*)event
 {
-    ImGui_ImplOSX_HandleEvent(event, self);
+    if (!ImGui_ImplOSX_HandleEvent(event, self))
+        [super keyUp:event];
 }
 
 - (void)insertText:(id)aString replacementRange:(NSRange)replacementRange
@@ -647,7 +650,7 @@ bool ImGui_ImplOSX_HandleEvent(NSEvent* event, NSView* view)
             wheel_dx = [event deltaX];
             wheel_dy = [event deltaY];
         }
-        if (wheel_dx != 0.0 || wheel_dx != 0.0)
+        if (wheel_dx != 0.0 || wheel_dy != 0.0)
             io.AddMouseWheelEvent((float)wheel_dx * 0.1f, (float)wheel_dy * 0.1f);
 
         return io.WantCaptureMouse;
