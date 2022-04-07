@@ -1,3 +1,6 @@
 [submodule "implot"]
 	path = implot
 	url = https://github.com/epezent/implot.git
+[submodule "imguizmo"]
+	path = imguizmo
+	url = https://github.com/Simlaub/ImGuizmo.git

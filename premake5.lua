@@ -25,7 +25,19 @@ project "ImGui"
 		"implot/implot.cpp",
 		"implot/implot_demo.cpp",
 		"implot/implot_internal.h",
-		"implot/implot_items.cpp"
+		"implot/implot_items.cpp",
+
+		"imguizmo/ImGuizmo.h",
+		"imguizmo/ImGuizmo.cpp",
+		"imguizmo/GraphEditor.h",
+		"imguizmo/GraphEditor.cpp",
+		"imguizmo/ImCurveEdit.h",
+		"imguizmo/ImCurveEdit.cpp",
+		"imguizmo/ImGradient.h",
+		"imguizmo/ImGradient.cpp",
+		"imguizmo/ImSequencer.h",
+		"imguizmo/ImSequencer.cpp",
+		"imguizmo/ImZoomSlider.h"
 	}
 
     includedirs
